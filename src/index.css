@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Geist', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+/* ============================================================
+   ACCENT — the ONE place to change the site's accent colour.
+   Swap these four values and the whole UI + SVG motifs follow.
+   Theme: slate-navy base + bright blue accent (zafarr.xyz palette).
+   Alternates on hand:
+     orange : light #ea580c · dark #fb923c · rgb 234,88,12
+     cyan   : light #0891b2 · dark #22d3ee · rgb 8,145,178
+     violet : light #7c3aed · dark #a78bfa · rgb 124,58,237
+   ============================================================ */
+:root {
+  --accent: #2563eb;          /* blue-600 — accent text/icons, LIGHT mode */
+  --accent-dark: #60a5fa;     /* blue-400 — brighter for DARK mode        */
+  --accent-rgb: 59, 130, 246; /* #3b82f6 — for translucent washes/borders */
+  --accent-motif: #3b82f6;    /* SVG project-cover motif colour           */
+}
+:root.dark { --accent-motif: #60a5fa; }
+
+/* Accent utility classes — components use these, never raw colours. */
+.text-accent { color: var(--accent); }
+:root.dark .text-accent { color: var(--accent-dark); }
+.hover\:text-accent:hover { color: var(--accent); }
+:root.dark .hover\:text-accent:hover { color: var(--accent-dark); }
+.group:hover .group-hover\:text-accent { color: var(--accent); }
+:root.dark .group:hover .group-hover\:text-accent { color: var(--accent-dark); }
+.bg-accent-soft { background-color: rgba(var(--accent-rgb), 0.7); }
+.decoration-accent { text-decoration-color: var(--accent); }
+.hover\:decoration-accent:hover { text-decoration-color: var(--accent); }
+
+/* Accent-tinted text selection, both themes. */
+.selection-accent ::selection {
+  background-color: rgba(var(--accent-rgb), 0.28);
+  color: inherit;
+}
+
+/* ---- Minimal glass system ----
+   A quiet ground with one faint accent wash gives the glass something to
+   refract. Panes are translucent + gently blurred + hairline-bordered. */
+:root {
+  /* Both ground colours are always available (theme-independent) so the theme
+     reveal overlay can read the INCOMING colour regardless of current theme.
+     Slate-navy world from zafarr.xyz: slate-50 light / deep navy-black dark. */
+  --ground-light: #f8fafc;   /* slate-50 */
+  --ground-dark: #0a0f1a;    /* deep navy-black */
+
+  --ground: var(--ground-light);
+  --glass-fill: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(15, 23, 42, 0.08);   /* slate-900 tint */
+  --glass-top: rgba(255, 255, 255, 0.8);
+  /* Small chips carry no blur, so they get a self-sufficient (more opaque) fill. */
+  --chip-fill: rgba(255, 255, 255, 0.55);
+}
+:root.dark {
+  --ground: var(--ground-dark);
+  --glass-fill: rgba(148, 163, 184, 0.06);  /* cool slate glass */
+  --glass-border: rgba(148, 163, 184, 0.14); /* slate-400 tint */
+  --glass-top: rgba(148, 163, 184, 0.12);
+  --chip-fill: rgba(148, 163, 184, 0.08);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  color-scheme: light dark;
+  background-color: var(--ground);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* The faint accent wash lives on its own fixed, GPU-composited layer instead
+   of `background-attachment: fixed` (which causes scroll jank in Chromium). */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  /* One soft, wide orange glow drifting from the top-right — the quiet
+     "warm gradient through the site", kept low-opacity and tasteful. */
+  background:
+    radial-gradient(70rem 46rem at 96% -12%, rgba(var(--accent-rgb), 0.11), transparent 58%),
+    radial-gradient(50rem 34rem at 8% -6%, rgba(var(--accent-rgb), 0.05), transparent 60%);
+}
+
+/* A pane of glass — real backdrop blur, used ONLY on the few large panes
+   and the navbar (expensive; kept to ~5 elements total). */
+.glass {
+  background: var(--glass-fill);
+  backdrop-filter: blur(10px) saturate(1.15);
+  -webkit-backdrop-filter: blur(10px) saturate(1.15);
+  border: 1px solid var(--glass-border);
+  box-shadow: inset 0 1px 0 0 var(--glass-top);
+}
+
+/* Small "glass" chips/buttons — translucent fill only, NO backdrop-filter.
+   Blur is invisible at this size and there are dozens of them, so dropping
+   it here is the main performance win while the look is unchanged. */
+.glass-soft {
+  background: var(--chip-fill);
+  border: 1px solid var(--glass-border);
+}
+
+/* Interactive glass: quiet lift on hover, no drama. */
+.glass-interactive {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease, background-color 0.3s ease;
+}
+.glass-interactive:hover {
+  transform: translateY(-1px);
+  border-color: rgba(var(--accent-rgb), 0.4);
+}
+
+/* Hairline rule to divide regions inside a pane. */
+.hairline {
+  height: 1px;
+  background: var(--glass-border);
+}
+.hairline-v {
+  width: 1px;
+  background: var(--glass-border);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+:focus:not(:focus-visible) { outline: none; }
+
+/* Theme switch: the circular reveal-from-button uses the View Transitions API,
+   driven by a per-toggle @keyframes injected from App.tsx (literal px coords, no
+   CSS variables, no WAAPI-on-pseudo — so Chrome and Brave behave identically). */
