@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Local tooling state
+.impeccable/hook.cache.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
