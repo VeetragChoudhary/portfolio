@@ -29,7 +29,7 @@ const linkIcon = {
 
 /** Abstract cover motif per project — no external images required. */
 const covers: Record<ProjectCardProps['cover'], React.ReactNode> = {
-  // ContextMemory — connected memory / graph nodes
+  // Centralized Exchange — connected nodes / graph
   graph: (
     <svg viewBox="0 0 400 200" className="w-full h-full" preserveAspectRatio="xMidYMid slice">
       <defs>
@@ -57,7 +57,7 @@ const covers: Record<ProjectCardProps['cover'], React.ReactNode> = {
       </g>
     </svg>
   ),
-  // AIxAI — orchestrated multi-agent flow
+  // Contest Platform — orchestrated service flow
   agents: (
     <svg viewBox="0 0 400 200" className="w-full h-full" preserveAspectRatio="xMidYMid slice">
       <defs>
@@ -84,7 +84,7 @@ const covers: Record<ProjectCardProps['cover'], React.ReactNode> = {
       <rect x="300" y="82" width="42" height="36" rx="6" fill="#78716c" opacity="0.6" />
     </svg>
   ),
-  // HomeSage — map / geospatial pins and trend lines
+  // NextUp — nodes and trend lines
   map: (
     <svg viewBox="0 0 400 200" className="w-full h-full" preserveAspectRatio="xMidYMid slice">
       <defs>

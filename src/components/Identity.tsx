@@ -43,7 +43,7 @@ export const Identity: React.FC = () => {
                 Veetrag Choudhary
               </h1>
               <p className="mt-2 font-mono text-[13px] tracking-tight text-slate-500 dark:text-slate-500">
-                Backend Engineer <span className="text-accent">·</span> Fullstack <span className="text-accent">·</span> Applied AI
+                Backend Engineer <span className="text-accent">·</span> Fullstack
               </p>
             </div>
           </div>

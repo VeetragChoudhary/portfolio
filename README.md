@@ -1,6 +1,6 @@
 # Veetrag Choudhary — Portfolio
 
-A single-page personal portfolio for a backend engineer with AI/ML depth.
+A single-page personal portfolio for a backend engineer.
 Minimal glassmorphism, one warm accent, light/dark themes with a smooth
 toggle-origin theme transition.
 
