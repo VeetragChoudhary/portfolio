@@ -6,6 +6,7 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 const projectData = [
   {
     title: 'Centralized Exchange',
+    description: 'Built a spot cryptocurrency exchange in TypeScript with an in-memory matching engine supporting limit orders, price-time matching, and balance settlement across four services communicating over Redis pub/sub. Implemented JWT auth with Prisma/Postgres and a React + Tailwind trading interface with a live orderbook over WebSockets.',
     tags: ['React', 'TypeScript', 'Node.js', 'Express', 'Redis', 'WebSockets', 'PostgreSQL', 'Prisma'],
     links: [
       { label: 'Source', url: 'https://github.com/VeetragChoudhary/CEX', type: 'source' as const }
