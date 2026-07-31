@@ -30,7 +30,7 @@ export const Experience: React.FC = () => {
           </li>
           <li className="flex gap-2.5">
             <span className="mt-1.5 h-1 w-1 shrink-0 bg-accent-soft" aria-hidden />
-            Designed APIs and data models for the product.
+            Designed APIs and data models for the products.
           </li>
           <li className="flex gap-2.5">
             <span className="mt-1.5 h-1 w-1 shrink-0 bg-accent-soft" aria-hidden />

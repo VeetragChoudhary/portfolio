@@ -15,7 +15,7 @@ export interface ProjectLink {
 
 export interface ProjectCardProps {
   title: string;
-  description: string;
+  description?: string;
   tags: string[];
   links: ProjectLink[];
   cover: 'graph' | 'agents' | 'map';
@@ -153,9 +153,11 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           </div>
         </div>
 
-        <p className="mt-2 text-[14px] leading-relaxed text-slate-600 dark:text-slate-400">
-          {description}
-        </p>
+        {description && (
+          <p className="mt-2 text-[14px] leading-relaxed text-slate-600 dark:text-slate-400">
+            {description}
+          </p>
+        )}
 
         <div className="mt-3 flex flex-wrap gap-1.5">
           {tags.map((tag) => (

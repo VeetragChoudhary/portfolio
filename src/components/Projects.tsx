@@ -5,32 +5,28 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const projectData = [
   {
-    title: 'ContextMemory',
-    description: 'A memory system for AI apps that builds context graphs from interactions. Extracts facts as connected semantic and episodic memories for intelligent retrieval across conversations.',
-    tags: ['Python', 'OpenAI', 'PostgreSQL', 'Vector DB', 'RAG', 'PyPI'],
+    title: 'Centralized Exchange',
+    tags: ['React', 'TypeScript', 'Node.js', 'Express', 'Redis', 'WebSockets', 'PostgreSQL', 'Prisma'],
     links: [
-      { label: 'Website', url: 'https://contextmemory.ai', type: 'website' as const },
-      { label: 'Package', url: 'https://pypi.org/project/contextmemory', type: 'package' as const }
+      { label: 'Source', url: 'https://github.com/VeetragChoudhary/CEX', type: 'source' as const }
     ],
     cover: 'graph' as const
   },
   {
-    title: 'AIxAI',
-    description: 'MCP-powered system that generates Pydantic AI agents via multi-agent LangGraph workflows. Crawls docs into Supabase with OpenAI embeddings for semantic, RAG-based answers.',
-    tags: ['LangGraph', 'Pydantic AI', 'Supabase', 'Agentic RAG', 'MCP', 'Python'],
+    title: 'Contest Platform',
+    description: 'A competitive programming contest platform with real-time leaderboards, multi-type problem support (MCQ and DSA), and separate creator/contestant workflows.',
+    tags: ['React', 'TypeScript', 'Express', 'Node.js', 'PostgreSQL', 'Prisma'],
     links: [
-      { label: 'Website', url: 'https://aixai.dev', type: 'website' as const },
-      { label: 'Source', url: 'https://github.com/veetrag/aixai', type: 'source' as const }
+      { label: 'Source', url: 'https://github.com/VeetragChoudhary/Contest-Platform', type: 'source' as const }
     ],
     cover: 'agents' as const
   },
   {
-    title: 'HomeSage',
-    description: 'Smart companion for real estate transactions. Automates property valuation, aggregates market listings, and analyzes neighborhood trends with interactive map-based visualization.',
-    tags: ['FastAPI', 'Machine Learning', 'Mapbox', 'Python', 'Data Science'],
+    title: 'NextUp',
+    description: 'A real-time collaborative music queue based music streaming platform. Built with Next.js frontend and a express.js backend with PostgreSQL + Prisma.',
+    tags: ['TypeScript', 'Next.js', 'Node.js', 'Express.js', 'PostgreSQL', 'Prisma', 'WebSockets'],
     links: [
-      { label: 'Website', url: 'https://homesage.ai', type: 'website' as const },
-      { label: 'Source', url: 'https://github.com/veetrag/homesage', type: 'source' as const }
+      { label: 'Source', url: 'https://github.com/VeetragChoudhary/NextUp', type: 'source' as const }
     ],
     cover: 'map' as const
   }
