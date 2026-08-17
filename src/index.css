@@ -1,0 +1,55 @@
+@import 'tailwindcss';
+
+/* Design tokens — Ledger.
+   Colors, sizes and spacing are final per the handoff; do not add new type
+   sizes or weights. The design's identity comes from its flatness. */
+@theme {
+  --color-bg: #0e0e0d;
+  --color-bright: #f2f0ea;
+  --color-default: #d9d7d2;
+  --color-body: #b4b1aa;
+  --color-muted: #8d8a82;
+  --color-accent: #e8b04b;
+  --color-accent-hover: #f5c876;
+  --color-rule: #3a3934;
+
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* 13.5px sets the whole page; 19px is the single exception (entry titles). */
+  --text-base: 13.5px;
+  --text-base--line-height: 1.75;
+  --text-title: 19px;
+  --text-title--line-height: 1.75;
+  --text-source: 12px;
+}
+
+/* Label column and gutter of every label → value row. Plain custom properties,
+   not @theme tokens — they are referenced directly, not through the spacing scale. */
+:root {
+  --label-col: 132px;
+  --label-gutter: 24px;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  line-height: var(--text-base--line-height);
+  font-weight: 400;
+}
+
+/* Base layer so per-link utilities (the muted `source ↗`) still win on color. */
+@layer base {
+  a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  /* No transitions anywhere — the page is a document. */
+  a:hover {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
