@@ -24,8 +24,8 @@ export type TimelineEntry = {
 
 export const experience: TimelineEntry[] = [
   {
-    date: '2026.01—05',
-    title: 'Krane apps — Fullstack Intern',
+    date: '2026.01—07',
+    title: 'Krane apps — Fullstack Engineer',
     // TODO: placeholders inherited from the current site — replace with real
     // accomplishments before shipping (see README "Open items").
     notes: [
